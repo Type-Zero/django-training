@@ -1,26 +1,15 @@
 # Django Training
+
+_This material is written for **Python 3.5** & **Django 1.8**. Instructions and commands are given for a **Mac OS X** environment. Linux/Unix and Windows users may need to adapt some of those to their system._
 * * *
-*This material is intended to work with **Python 3.5** & **Django 1.8**. Instructions and commands are given for a Mac OS X environment. Linux/Unix and Windows users may need to adapt some of those to their system.*
-* * *
 
-## Setup
-The following instructions assume you have set up **python3** with **pip**, **virtualenv** and **virtualenvwrapper** at the system level (OS X).
+## Table of Contents
 
-- Create a virtual environment based on Python 3.5:
+1. [Setup](1-Setup.md)
 
-```bash
-$ mkvirtualenv -p python3 dj_training
-```  
 
-- Install Django:
+## About
 
-```bash
-(dj_training)$ pip install django
-```  
+This set of tutorials intends to give a brief overview of the [Django](https://www.djangoproject.com) framework, and of [Python](https://www.python.org) as a tool to build web applications.
 
-- Check Python (3.5) and Django (1.8) version:
-
-```bash
-(dj_training)$ python --version
-(dj_training)$ django-admin --version
-```  
+The project is inspired by Arun Ravindran's [Building a Blog with Django 1.7 in 16 mins](https://youtu.be/7rgph8en0Jc) tutorial.
