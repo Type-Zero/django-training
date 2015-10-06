@@ -58,20 +58,21 @@ A 'slug' is usually based on the title of the article and is used to build URLs.
 
 **published** indicates whether the article should be published on our site.
 
-**created** and **updated** are date & time field marking, respectively, the creation and modification of an article.
+The **created** and **updated** fields are date & time field marking, respectively, the creation and modification of an article.
 The *auto_add_now* parameter lets Django set the date and time automatically when an object is created.
 In the same fashion, *auto_now* lets it update the date and time field each time the object is modified.
 
 The **\_\_str\_\_()** method defines what designates an Article object.
 We logically use its title for that.
 
-The **Meta** class defines generic metadata for our object: *verbose_name*, *verbose_name_plural*, *ordering* blah blah blah...
+The **Meta** class sets generic metadata for our object.
+*verbose_name* and *verbose_name_plural* are the names used to designate the object in the **admin** interface.
+The *ordering* parameter defines the default order to be used to sort query-set results.
 
-* * *
-DRAFT
-* * *
+Now that the main model is defined, we need to actually create the associated entity in the database.
+To do so, we will use the same ```python manage.py migrate``` command as seen in the [previous chapter](2-Project.md), but we first need to tell the project settings about our new module.
 
-Add blog to installed apps
+Let's add our 'blog' app to the ```INSTALLED_APPS``` in _simpleblog/settings.py_:
 
 ```python
 # simpleblog/settings.py
@@ -88,24 +89,32 @@ INSTALLED_APPS = (
 ...
 ```
 
-Create initial migration:
+Once added to the ```INSTALLED_APPS```, the application will be taken into account by Django for a various set of processes, including the creation of migration files.
+This is our next step:
 
 ```bash
 $ python manage.py makemigrations
 ```
+
+The output of this command is pretty explicit
+
 ```bash
 Migrations for 'blog':
   0001_initial.py:
     - Create model Article
 ```
 
-Migration created, let's apply:
+In the _blog/migrations/_ folder, the first migration file was created, ```0001_initial.py```.
+This file contains the ORM python code that will be translated to database commands (**SQLite** in our case).
+
+Now that the migration file is created, let's apply it:
 
 ```bash
 $ python manage.py migrate
 ```
+Our 'Article' model is now linked to a database entity.
+We can add this model to the **admin** interface by editing the _blog/admin.py_ file:
 
-Register model to admin.py:
 ```python
 # blog/admin.py
 from django.contrib import admin
@@ -114,6 +123,13 @@ from .models import Article
 
 admin.site.register(Article)
 ```
+
+This way, when reaching the **admin** interface at [http://127.0.0.1:8000](http://127.0.0.1:8000) (after starting the server using ```python manage.py runserver```), the 'Blog Article' item appears in a new 'Blog' module.
+
+* * *
+DRAFT
+* * *
+
 
 Customize the Article model admin:
 
