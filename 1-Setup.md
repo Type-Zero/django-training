@@ -1,3 +1,5 @@
+[← Previous](README.md) | [Index](README.md) | [Next →](2-Project.md)
+
 # Setup
 
 The following instructions assume you have set up **python3** with **pip**, **virtualenv** and **virtualenvwrapper** at the system level (OS X).
