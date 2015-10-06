@@ -7,6 +7,7 @@ _This material is written for **Python 3.5** & **Django 1.8**. Instructions and 
 
 1. [Environment Setup](1-Setup.md)
 2. [Project Creation](2-Project.md)
+3. [Blog Application](3-Application.md)
 
 
 ## About

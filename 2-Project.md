@@ -1,4 +1,4 @@
-[← Previous](1-Setup.md) | [Index](README.md) | Next →
+[← Previous](1-Setup.md) | [Index](README.md) | [Next →](3-Application.md)
 
 # Django Project
 
@@ -37,6 +37,7 @@ Inside the Python module generated, two elements: **manage.py** and another **si
     Let's change the default name of the database to _database.sqlite3_, just for kicks:
 
     ```python
+    # simpleblog/settings.py
     ...
     DATABASES = {
         'default': {
@@ -145,4 +146,4 @@ _NB: Generally, you will only want to use ```python manage.py createsuperuser```
 ## Next...
 
 At this point, we have set up the global frame for our project.
-In the [next chapter](#), we will start creating our own application.
+In the [next chapter](3-Application.md), we will start creating our own application.
