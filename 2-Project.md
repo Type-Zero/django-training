@@ -32,7 +32,7 @@ Inside the Python module generated, two elements: **manage.py** and another **si
 
 - **settings.py** gathers all the settings and parameters of our Django project.
     In particular, ```INSTALLED_APPS``` details the applications that compose our project, and we can see that a few elements are there by default.
-    ```DATABASES``` precise the nature and name of the database system.
+    ```DATABASES``` precises the nature and name of the database system.
     The default is _sqlite3_.
     Let's change the default name of the database to _database.sqlite3_, just for kicks:
 
@@ -137,7 +137,7 @@ While **Groups** is empty right now, **Users** should list at least one entry: t
 
 We don't need any other user or group for now, you can still have a look at the creation or edition forms for those entities.
 Django's default **User** model actually has a lot more fields than the mandatory ones we defined via the command line interface.
-**Users** can be assigned to **Groups**, which facilitate the management of multiple users and their permissions.
+**Users** can be assigned to **Groups**, which facilitates the management of multiple users and their permissions.
 
 _NB: Generally, you will only want to use ```python manage.py createsuperuser``` once, to define your initial 'superuser', and then use the **admin** interface to create your other users if needed._
 
