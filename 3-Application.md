@@ -1,9 +1,9 @@
-[← Previous](2-Project.md) | [Index](README.md) | Next →
+[← Previous](2-Project.md) | [Index](README.md) | [Next →](4-ViewsAndTemplates.md)
 
 # First Application
 
-This chapter details the creation of an application module, and the definition of its _models_ and _views_.
-Basic use of the Django shell is also covered here.
+This chapter details the creation of an application module, and the definition of its _models_.
+Basic use of the Django shell is also covered in this section.
 
 ## Application Creation
 
@@ -21,7 +21,7 @@ The ```startapp``` command created a new _blog/_ python module in which the main
 - **tests.py** will hold the tests used to verify the application.
 - **views.py** is the place where the views are defined, the logic used to render HTTP response objects.
 
-We will cover each of those elements in more details in the rest of this chapter.
+We will cover each of those elements in more details in the rest of this tutorial, starting with the _models_ right now.
 
 ## Models
 
@@ -51,9 +51,9 @@ class Article(models.Model):
         verbose_name_plural = 'Blog Articles'
         ordering = ['-created']
 ```
-The **title** field is a standard chain of characters, while our **body** is a text field, an unlimited chain of character allowing more flexibility.
+The **title** field is a standard chain of characters, while our **body** is a text field, an unlimited chain of characters allowing more flexibility.
 
-The **slug** is a character chain consisting exclusively of letters, numbers, underscores or hyphens.
+The **slug** is a characters chain consisting exclusively of letters, numbers, underscores or hyphens.
 A 'slug' is usually based on the title of the article and is used to build URLs.
 
 **published** indicates whether the article should be published on our site.
@@ -124,14 +124,14 @@ from .models import Article
 admin.site.register(Article)
 ```
 
-This way, when reaching the **admin** interface at [http://127.0.0.1:8000](http://127.0.0.1:8000) (after starting the server using ```python manage.py runserver```), the 'Blog Article' item appears in a new 'Blog' module.
+This way, when reaching the **admin** interface at [http://127.0.0.1:8000](http://127.0.0.1:8000) (after starting the server using ```python manage.py runserver```), the 'Blog Articles' item appears under a new 'Blog' section.
+This module enables you to add or edit Article objects via a simple form.
+Go ahead and create a first Article, that you can directly set to 'published'.
 
-* * *
-DRAFT
-* * *
+The creation of the Article will redirect to a 'list' view of all the existing objects, where their title is used as an identifier.
 
-
-Customize the Article model admin:
+Django lets you customize the appearance and behavior of a lot of components of the **admin** interface.
+We will edit the _blog/admin.py_ file to make this interface more efficient:
 
 ```python
 # blog/admin.py
@@ -140,25 +140,54 @@ from django.contrib import admin
 from .models import Article
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ("title", "created")
-    prepopulated_field = {"slug": ("title",)}
+    list_display = ('title', 'created', 'published')
+    prepopulated_field = {'slug': ('title',)}
 
 admin.site.register(Article, ArticleAdmin)
 ```  
 
-## Shell
+Those modifications cover two elements:
+- the 'list' display of our Articles now also show the creation date and publication status of the entries,
+- the Article creation form now has the _slug_ field automatically populated based on the _title_'s value.
+You can try this out by writing a new Article.
+Let's keep it unpublished for now.
+
+The **admin** module is a powerful interface for accessing and editing your data, but it is not the only way you can connect to the back-end of your system.
+One other way to do that without the need to log into a web browser is the Django shell.
+
+## Django Shell
+
+Django comes bundled with a shell tool, which is fundamentally a Python prompt with a direct connection to your project's settings.
+It allows you to import your models, views and parameters directly inside a terminal.
+
+We will stop the development server (using **CONTROL+C**), and type in the following:
 
 ```bash
 $ python manage.py shell
 ```
 
+This opens up a pretty standard Python shell, which you can close by using **CONTROL+D**, or typing in ```> exit()```.
+Let's try the following:
+
 ```bash
 > from blog.models import Article
 > Article.objects.all()
-> Article.objects.filter(published=True).all()
 ```
+This set of commands imports the Article model from our 'blog' application, and uses the default _objects_ queryset to list all the existing Article entries.
+This tool can be used to refine queries, such as:
 
-Custom QuerySet
+```bash
+> Article.objects.filter(published=True).all()
+```  
+
+This query filters the objects based on the _published_ field value, to only return the published Articles.
+The results speak for themselves: when the first command return both of our Articles, the second only returned the first one since we left the second one unpublished.
+
+Filters on query-sets are powerful, but Django also lets you define your own query-sets.
+
+## Customized Query Sets
+
+We will edit our _blog/models.py_ file to create a custom query set model:
 
 ```python
 # blog/models.py
@@ -173,6 +202,8 @@ class ArticleQuerySet(models.QuerySet):
 ...
 ```
 
+and add this query set as a manager for our Article class:
+
 ```python
 # blog/models.py
     ...
@@ -184,10 +215,21 @@ class ArticleQuerySet(models.QuerySet):
         return self.title
     ...
 ```
-Let's try our new QuerySet Manager:
-```python manage.py shell```
+Let's try our new Query Set Manager.
+If you haven't already, you will need to close the shell session (**CONTROL+D**) and re-open it with ```python manage.py shell```.
+
+_Unlike the development server, the shell does not refresh its context automatically when a modification is made on a model or a view. Since we just updated our blog/models.py, we need to restart the shell to make sure the objects we work with are up to date._
 
 ```bash
 > from blog.models import Article
 > Article.objects.published()
-```
+```  
+
+This effectively runs the same as our previous call to ```Article.objects.filter(published=True).all()```, but in a more elegant way.
+
+_For such a trivial example, the advantage of using a custom QuerySet may seem small, but using straight out filters can rapidly become cumbersome, especially if chaining them and using them at multiple locations in the code. A personalized QuerySet acts as a shortcut for complex queries._
+
+## Next...
+
+This chapter saw the setup of the _models_ that will be the base of our site, and presented the tools used to interact with those entities from an administrator point of view.
+The next step is to build a public interface to our site using [views and templates](4-ViewsAndTemplates.md).
