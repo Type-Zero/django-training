@@ -1,0 +1,6 @@
+<a href="{% url 'index' %}">← Back</a>
+<div>
+    <h1>{{ object.title }}</h1>
+    <p>{{ object.body }}</p>
+    <em>Created: {{ object.created }}{% if object.updated %} | Last edited: {{ object.updated }}{% endif %}</em>
+</div>

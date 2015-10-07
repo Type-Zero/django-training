@@ -1,0 +1,7 @@
+{% for object in objects %}
+<div>
+    <h1><a href="{% url 'details' object.slug %}">{{ object.title }}</a></h1>
+    <p>{{ object.body }}</p>
+    <em>Created: {{ object.created }}{% if object.updated %} | Last edited: {{ object.updated }}{% endif %}</em>
+</div>
+{% endfor %}
