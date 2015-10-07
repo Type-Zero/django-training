@@ -20,6 +20,8 @@ def index(request):
 
 ## Associated Template
 
+Creation of the associated template, _index.html_ under a new _templates/_ folder inside _blog/_:
+
 ```html
 <!-- blog/templates/index.html -->
 {% for object in objects %}
@@ -33,6 +35,8 @@ def index(request):
 
 ## Routing System
 
+Have the project's urls include the 'blog' _urls.py_ module:
+
 ```python
 # simpleblog/urls.py
 from django.conf.urls import include, url
@@ -42,7 +46,9 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('blog.urls')),
 ]
-```
+```  
+
+Creation of a _urls.py_ inside _blog/_
 
 ```python
 # blog/urls.py
@@ -56,6 +62,8 @@ urlpatterns = [
 ```
 
 ## Details View and Templates
+
+Creation of view, template and URL for detailed Article pages:
 
 ```python
 # blog/views.py
