@@ -1,6 +1,13 @@
-<a href="{% url 'index' %}">← Back</a>
-<div>
+{% extends 'base-template.html' %}
+
+{% block meta-title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+<div class="article">
+    <a class="back" href="{% url 'index' %}">← Back</a>
     <h1>{{ object.title }}</h1>
-    <p>{{ object.body }}</p>
-    <em>Created: {{ object.created }}{% if object.updated %} | Last edited: {{ object.updated }}{% endif %}</em>
+    <hr/>
+    <div class="body body-list">{{ object.body }}</div>
+    <p class="date-info"><em>Created: {{ object.created }}{% if object.updated %} | Last edited: {{ object.updated }}{% endif %}</em></p>
 </div>
+{% endblock %}

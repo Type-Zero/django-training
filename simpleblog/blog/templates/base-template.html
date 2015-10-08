@@ -1,0 +1,22 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Django Blog - {% block meta-title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}">
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar">
+                <div class="title">My Django Blog</div>
+            </nav>
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+    {% block scripts %}{% endblock %}
+</html>

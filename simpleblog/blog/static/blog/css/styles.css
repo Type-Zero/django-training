@@ -1,0 +1,67 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+body {
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 840px;
+    min-width: 480px;
+    padding: 0 20px;
+    margin: auto;
+}
+
+nav {
+    width: inherit;
+    padding: 10px 20px;
+    margin: 20px auto;
+    border-radius: 5px;
+    background-color: #000;
+}
+nav .title {
+    width: inherit;
+    color: #EEE;
+    font-weight: bold;
+    font-size: large;
+}
+
+.article {
+    width: inherit;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #EEE;
+}
+.article h1 {
+    margin: 10px 0;
+}
+.article h1 a {
+    color: #000;
+    font-weight: bold;
+    font-size: xx-large;
+    text-decoration: none;
+}
+.article .date-info {
+    color: #666;
+    font-size: smaller;
+}
+.article  .body {
+    text-align: justify;
+}
+.article .body.body-list {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 25px;
+    max-height: 100px;
+}
+.article hr {
+    border: 0;
+    height: 1px;
+    background: #000;
+}
+
+.article .back {
+    font-size: smaller;
+    color: #000;
+    text-decoration: none;
+}

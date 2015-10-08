@@ -1,7 +1,16 @@
+{% extends 'base-template.html' %}
+
+{% block meta-title %}Index{% endblock %}
+
+{% block content %}
+
 {% for object in objects %}
-<div>
+<div class="article article-list">
     <h1><a href="{% url 'details' object.slug %}">{{ object.title }}</a></h1>
-    <p>{{ object.body }}</p>
-    <em>Created: {{ object.created }}{% if object.updated %} | Last edited: {{ object.updated }}{% endif %}</em>
+    <hr/>
+    <div class="body body-list">{{ object.body }}</div>
+    <p class="date-info"><em>Created: {{ object.created }}{% if object.updated %} | Last edited: {{ object.updated }}{% endif %}</em></p>
 </div>
 {% endfor %}
+
+{% endblock %}
