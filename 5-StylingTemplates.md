@@ -220,7 +220,7 @@ In addition to the tags definition, we slightly modified some of the initial ele
 Let's update our _styles.css_ to handle the 'Back' links styling:
 
 ```css
-/* blog/static/css/styles.css */
+/* blog/static/blog/css/styles.css */
 ...
 .article .back {
     font-size: smaller;
