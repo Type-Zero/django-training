@@ -1,0 +1,20 @@
+{% extends 'base-template.html' %}
+
+{% block meta-title %}Tagged as "{{ tag.name }}"{% endblock %}
+
+{% block content %}
+
+<div class="article">
+    <span class="tag-results">Results for tag</span> <span class="tag big-tag"><span class="tagname">{{ tag.name }}</span></span>
+</div>
+
+<div class="article">
+    <p class="article-count">{% with count=objects.count %}{{ count }} Article{{ count|pluralize }}:{% endwith %}</p>
+    <hr/>
+    {% for object in objects %}
+    <a class="selection-list" href="{% url 'details' object.slug %}">
+        <span class="title">{{ object.title }}</span><span class="date-info"><em>Created: {{ object.created }}</em></span>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

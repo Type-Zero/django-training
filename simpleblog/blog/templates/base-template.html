@@ -13,7 +13,7 @@
     <body>
         <div class="container">
             <nav class="navbar">
-                <div class="title">My Django Blog</div>
+                <div class="title"><a href="{% url 'index' %}">My Django Blog</a></div>
             </nav>
             {% block content %}{% endblock %}
         </div>

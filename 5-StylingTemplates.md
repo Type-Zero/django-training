@@ -1,4 +1,4 @@
-[← Previous](4-ViewsAndTemplates.md) | [Index](README.md) | Next →
+[← Previous](4-ViewsAndTemplates.md) | [Index](README.md) | [Next →](6-NewModelAndRelations.md)
 
 # Styling our Templates
 

@@ -9,6 +9,13 @@
     <h1><a href="{% url 'details' object.slug %}">{{ object.title }}</a></h1>
     <hr/>
     <div class="body body-list">{{ object.body }}</div>
+    {% if object.tags %}
+    <div class="tags">Tags: 
+        {% for tag in object.tags.all %}
+        <a href="{% url 'tag-selection' tag.slug %}" class="tag small-tag"><span class="tagname">{{ tag.name }}</span></a>
+        {% endfor %}
+    </div>
+    {% endif %}
     <p class="date-info"><em>Created: {{ object.created }}{% if object.updated %} | Last edited: {{ object.updated }}{% endif %}</em></p>
 </div>
 {% endfor %}

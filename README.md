@@ -10,6 +10,7 @@ _This material is written for **Python 3.5** & **Django 1.8**. Instructions and 
 3. [Application & Models](3-Application.md)
 4. [Views & Templates](4-ViewsAndTemplates.md)
 5. [Styling and Organizing Templates](5-StylingTemplates.md)
+6. [New Models and Relations](6-NewModelAndRelations.md)
 
 
 ## About

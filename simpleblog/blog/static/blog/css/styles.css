@@ -20,9 +20,13 @@ nav {
 }
 nav .title {
     width: inherit;
-    color: #EEE;
+    color: #FFF;
     font-weight: bold;
     font-size: large;
+}
+nav .title a {
+    color: inherit;
+    text-decoration: none;
 }
 
 .article {
@@ -45,14 +49,15 @@ nav .title {
     color: #666;
     font-size: smaller;
 }
-.article  .body {
+.article .body {
     text-align: justify;
+    line-height: 25px;
+    margin: 25px 0;
 }
 .article .body.body-list {
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 25px;
-    max-height: 100px;
+    max-height: 150px;
 }
 .article hr {
     border: 0;
@@ -64,4 +69,137 @@ nav .title {
     font-size: smaller;
     color: #000;
     text-decoration: none;
+}
+
+
+/* TAGS */
+
+.tags {
+    margin-top:20px;
+}
+a.tag, .tag.small-tag, .tag.big-tag {
+    display: inline-block;
+    position: relative;
+    height: 24px;
+    line-height: 24px;
+    vertical-align: middle;
+    margin: 0 6px;
+    padding-right: 6px;
+    border: none;
+    background-color: #000;
+    color: #EEE;
+}
+.tag.big-tag {
+    height: 36px;
+    line-height: 36px;
+    padding-right: 12px;
+}
+a.tag:hover {
+    background-color: #FFF;
+    color: #666;
+}
+
+/* Trick to create the 'bevel' shaped corners on left side of Tag Button */
+a.tag:before, .tag.small-tag:before, .tag.big-tag:before {
+    content: "";
+    position: absolute;
+    bottom:0;
+    left:0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 0 0 7px;
+    border-color: transparent transparent transparent #EEE;
+}
+
+.tag.big-tag:before {
+    border-width: 10px 0 0 10px;
+}
+
+a.tag:after, .tag.small-tag:after, .tag.big-tag:after {
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 7px 0 0;
+    border-color: #EEE transparent transparent transparent;
+}
+
+.tag.big-tag:after {
+    border-width: 10px 10px 0 0;
+}
+
+.tag .tagname, .tag.small-tag .tagname, .tag.big-tag .tagname {
+    display: inline-block;
+    position: relative;
+    height: inherit;
+    margin:0;
+    padding:0;
+    padding-left: 24px;
+    line-height: inherit;
+    font-size: small;
+}
+
+.tag.big-tag .tagname {
+    padding-left: 38px;
+    font-size: medium;
+}
+
+/* Trick to create hole in Tag icon */
+.tag .tagname:before, .tag.small-tag .tagname:before, .tag.big-tag .tagname:before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: #EEE;
+}
+
+.tag.big-tag .tagname:before {
+    top: 10px;
+    left: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+}
+
+/* Tag Selection */
+.tag-results {
+    font-size: x-large;
+    font-weight: bold;
+    vertical-align: middle;
+    line-height: 36px;
+}
+
+.articles-count {
+    margin-top: 20px;
+}
+
+a.selection-list {
+    width: inherit;
+    margin: 10px 0px;
+    padding: 20px;
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 5px;
+    height: 36px;
+    line-height: 36px;
+    
+}
+a.selection-list:hover {
+    background-color: #FFF;
+}
+.selection-list .title {
+    font-size: x-large;
+    font-weight: bold;
+}
+.selection-list .date-info {
+    float: right;
+    font-size: medium;
 }
