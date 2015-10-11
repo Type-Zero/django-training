@@ -10,7 +10,7 @@ Mac OS X is awesome, but out-of-the-box lacks one critical thing to be a powerfu
 Ubuntu distributions have _aptitude_ (the famous ```apt-get```), Fedora-based Linux systems have _RPM_ (with ```yum```), but Mac OS X does not have anything of that sort.
 
 This is where __Homebrew__ comes in.
-Hommebrew is your missing CLI package manager (that's even its official tagline: http://brew.sh/).
+Homebrew is your missing CLI package manager (that's even its official tagline: http://brew.sh/).
 
 The only requirement to install it is __Ruby__, which conveniently comes pre-installed in OS X.
 
@@ -39,7 +39,7 @@ In a Terminal window, type in ```python --version``` to check that.
 This will come in handy later on.
 
 As nice as this is, __Python 3__ is becoming more and more popular and adopted for many platforms, and it would be great to have it running on our machine.
-Also, __Python 2__ is updated fairly frequently, and the  version packaged with Mac OS X is not updated at the same rate.
+Also, __Python 2__ is updated fairly frequently, and the version packaged with Mac OS X is not updated at the same rate.
 
 Let's install both _python_ and _python3_ with Homebrew:
 
@@ -48,14 +48,14 @@ $ brew install python python3
 ```
 
 You will want to run ```brew doctor``` right after this installation and follow any recommendation to make sure the newly installed _python_ won't conflict with the one pre-installed on the system.
-Once that's done, you can now run ``` which python``` and ```which python3``` to check that your Terminal runs the correct executables.
+Once that's done, you can run ``` which python``` and ```which python3``` to check that your Terminal runs the correct executables.
 Those should now point to '_/usr/local/bin/_' locations, which is where the Homebrew executables are stored.
 
 ```python --version``` and ```python3 --version``` will show you the exact version number of, respectively, Python2 and Python3.
 
 ## Virtualenv
 
-When working on a lot of different Python projects, it can quickly become difficult to manage the various Python packages, extensions and libraries, especially if working with multiple version of Python (2 & 3).
+When working on a lot of different Python projects, it can quickly become difficult to manage the various Python packages, extensions and libraries, especially if working with multiple versions of Python (2 & 3).
 __Virtualenv__ (https://pypi.python.org/pypi/virtualenv) is a Python library that can help with that: it allows you to create virtual Python environments for each of your projects, isolating the set of dependencies inside of them.
 
 Let's install it using the Python Package manager __pip__:
@@ -105,7 +105,7 @@ export WORKON_HOME=~/.envs
 source /usr/local/bin/virtualenvwrapper.sh
 ```
 Hit "esc" to leave insertion mode, then type in ":wq" to save and quit the _vi_ editor.
-You will want to Quit and Restart the Terminal application for thos changes to be taken into account.
+You will want to Quit and Restart the Terminal application for those changes to be taken into account.
 
 - _Option 1 & 2, "Anyways":_
 
@@ -122,7 +122,7 @@ Let's create a first virtual environment, that we will call 'dev_python':
 ```bash
 $ mkvirtualenv dev_python
 ```
-After creating it, the virtualenvwrapper automatically _activates_ the environment: you are working inside this environment.
+After creating it, virtualenvwrapper automatically _activates_ the environment: you are working inside this environment.
 An environment is active if its name appears before the terminal prompt line, in our case: ```(dev_python)$ ```.
 
 To leave the environment:
@@ -135,20 +135,21 @@ To activate it again:
 $ workon dev_python
 ```
 
-A virtual environment inherit all the 'pip' packages from the system-wide python application, but all packages installed within this environment will only be available to it.
+A virtual environment inherits all the 'pip' packages from the system-wide Python installation, but all packages installed within this environment will only be available to it.
 For example, let's install the famous 'pytz' package (a package to handle time zone-aware DateTime objects) in our development environment:
 ```bash
 (dev_python)$ pip install pytz
 ```
 
-A 'pip freeze' command will then list the installed packages:
+A 'pip freeze' command will list the installed packages:
 ```bash
 (dev_python)$ pip freeze
 ```
 As expected, our newly installed package appears in the list.
 Now, leave the environment with ```deactivate``` and run the same ```pip freeze``` command: the package is not installed globally.
+That's the idea.
 
-Our 'dev_python' environment is based on version 2 of Python, which is the default for virtualenvwrapper, but you can create a virtual environment based on Python 3 using the '-p' option:
+Our 'dev_python' environment is based on version 2 of Python, which is the default for virtualenvwrapper, but you can create a virtual environment based on any version of Python using the '-p' option:
 
 ```bash
 $ mkvirtualenv -p python3 dev_python3
@@ -169,4 +170,4 @@ _TIP: You can switch between environments using 'workon' without having to use '
 ## Next...
 
 This introduction to package management on Mac OS X hopefully gave you the bases to set up an efficient Python development environment.
-Next, you may want to have a look at our [Django tutorial](training/1-Setup.md), which covers the use of the Django framework for the development of web applications.
+Next, you may want to have a look at our [Django tutorial](training/1-Setup.md), which covers the use of the Django framework for the development of web applications with Python.
