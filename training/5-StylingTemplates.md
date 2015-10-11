@@ -1,4 +1,4 @@
-[← Previous](training/4-ViewsAndTemplates.md) | [Index](README.md) | [Next →](training/6-NewModelAndRelations.md)
+[← Previous](4-ViewsAndTemplates.md) | [Index](../README.md) | [Next →](6-NewModelAndRelations.md)
 
 # Styling our Templates
 
@@ -232,4 +232,4 @@ Let's update our _styles.css_ to handle the 'Back' links styling:
 ## Next...
 
 This chapter covered the main features of the Django **Template** engine, helping us to work on the design of the interface.
-[Next](training/6-NewModelAndRelations.md), we will return to core elements of Django, by adding new **models** to our application and managing relations between entities.
+[Next](6-NewModelAndRelations.md), we will return to core elements of Django, by adding new **models** to our application and managing relations between entities.

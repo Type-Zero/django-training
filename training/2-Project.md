@@ -1,4 +1,4 @@
-[← Previous](training/1-Setup.md) | [Index](README.md) | [Next →](training/3-Application.md)
+[← Previous](1-Setup.md) | [Index](../README.md) | [Next →](3-Application.md)
 
 # Django Project
 
@@ -146,4 +146,4 @@ _NB: Generally, you will only want to use ```python manage.py createsuperuser```
 ## Next...
 
 At this point, we have set up the global frame for our project.
-In the [next chapter](training/3-Application.md), we will start creating our own application.
+In the [next chapter](3-Application.md), we will start creating our own application.

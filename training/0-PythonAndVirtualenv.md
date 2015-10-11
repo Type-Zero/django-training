@@ -1,4 +1,4 @@
-[Index](README.md)
+[Index](../README.md)
 
 # Python & Virtualenv on Mac OS X
 

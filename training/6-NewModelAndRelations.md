@@ -1,4 +1,4 @@
-[← Previous](training/5-StylingTemplates.md) | [Index](README.md) | Next →
+[← Previous](5-StylingTemplates.md) | [Index](../README.md) | Next →
 
 # Going Further
 

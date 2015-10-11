@@ -1,8 +1,9 @@
-[← Previous](README.md) | [Index](README.md) | [Next →](training/2-Project.md)
+[← Previous](../README.md) | [Index](../README.md) | [Next →](2-Project.md)
 
 # Setup
 
 The following instructions assume you have set up **python3** with **pip**, **virtualenv** and **virtualenvwrapper** at the system level (OS X).
+If this is not the case, you can refer to [this tutorial](0-PythonAndVirtualenv.md).
 
 - Create a virtual environment based on Python 3.5:
 
