@@ -1,4 +1,4 @@
-[← Previous](3-Application.md) | [Index](README.md) | [Next →](5-StylingTemplates.md)
+[← Previous](training/3-Application.md) | [Index](README.md) | [Next →](training/5-StylingTemplates.md)
 
 # Views and Templates
 
@@ -159,4 +159,4 @@ We just added a link to the 'details' view for each article, embedded in their t
 
 We covered in this chapter the mechanics used to build and map interfaces with **urls**, **views** and **templates**.
 However, the generated HTML code is pretty bare and does not make for a great experience for our users.
-In the next chapter, we will take the time to add some [styling to our templates](5-StylingTemplates.md).
+In the next chapter, we will take the time to add some [styling to our templates](training/5-StylingTemplates.md).

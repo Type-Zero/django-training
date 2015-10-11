@@ -1,4 +1,4 @@
-[← Previous](README.md) | [Index](README.md) | [Next →](2-Project.md)
+[← Previous](README.md) | [Index](README.md) | [Next →](training/2-Project.md)
 
 # Setup
 

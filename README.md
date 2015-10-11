@@ -5,12 +5,12 @@ _This material is written for **Python 3.5** & **Django 1.8**. Instructions and 
 
 ## Table of Contents
 
-1. [Environment Setup](1-Setup.md)
-2. [Project Creation](2-Project.md)
-3. [Application & Models](3-Application.md)
-4. [Views & Templates](4-ViewsAndTemplates.md)
-5. [Styling and Organizing Templates](5-StylingTemplates.md)
-6. [New Models and Relations](6-NewModelAndRelations.md)
+1. [Environment Setup](training/1-Setup.md)
+2. [Project Creation](training/2-Project.md)
+3. [Application & Models](training/3-Application.md)
+4. [Views & Templates](training/4-ViewsAndTemplates.md)
+5. [Styling and Organizing Templates](training/5-StylingTemplates.md)
+6. [New Models and Relations](training/6-NewModelAndRelations.md)
 
 
 ## About

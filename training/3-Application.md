@@ -1,4 +1,4 @@
-[← Previous](2-Project.md) | [Index](README.md) | [Next →](4-ViewsAndTemplates.md)
+[← Previous](training/2-Project.md) | [Index](README.md) | [Next →](training/4-ViewsAndTemplates.md)
 
 # First Application
 
@@ -232,4 +232,4 @@ _For such a trivial example, the advantage of using a custom QuerySet may seem s
 ## Next...
 
 This chapter saw the setup of the _models_ that will be the base of our site, and presented the tools used to interact with those entities from an administrator point of view.
-The next step is to build a public interface to our site using [views and templates](4-ViewsAndTemplates.md).
+The next step is to build a public interface to our site using [views and templates](training/4-ViewsAndTemplates.md).
