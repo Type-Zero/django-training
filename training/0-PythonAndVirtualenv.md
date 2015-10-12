@@ -170,4 +170,4 @@ _TIP: You can switch between environments using 'workon' without having to use '
 ## Next...
 
 This introduction to package management on Mac OS X hopefully gave you the bases to set up an efficient Python development environment.
-Next, you may want to have a look at our [Django tutorial](training/1-Setup.md), which covers the use of the Django framework for the development of web applications with Python.
+Next, you may want to have a look at our [Django tutorial](1-Setup.md), which covers the use of the Django framework for the development of web applications with Python.
