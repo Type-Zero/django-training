@@ -8,7 +8,7 @@ This will add a layer of complexity to the application by defining relations bet
 
 ## New Model and Relation Fields
 
-Let's create a 'Tag' model that will simply becomposed of a slug field (for URLs and searches) and a more explicit name field.
+Let's create a 'Tag' model that will simply be composed of a _slug_ field (for URLs and searches) and a more explicit _name_ field.
 We will add it to _blog/models.py_:
 
 ```python
@@ -25,7 +25,7 @@ class Tag(models.Model):
         return self.name
 ```
 
-The 'Tag' model is associated with 'Article' in a __Many-To-Many__ relationship, so that an Article can have multiple Tags, and a same Tage can be used for multiple Articles.
+The 'Tag' model is associated with 'Article' in a __Many-To-Many__ relationship, so that an Article can have multiple Tags, and a same Tag can be used for multiple Articles.
 Let's add the _tag_ field to the 'Article' model:
 ```python
 # blogs/models.py
@@ -56,17 +56,17 @@ admin.site.register(Tag, TagAdmin)
 
 Since we updated the _blog/models.py_, it is time to update the database schema.
 We will run the ```python manage.py makemigrations``` command to generate a second migration file, *0002_auto_\[...\].py*.
-A quick look at this file indicates that it depends on our initial migration file, and its instructions are pretty explicit: create our new 'Tag' model and add a new field to the 'Article'.
+A quick look at this file indicates that it depends on our initial migration file, and its instructions are pretty explicit: create our new 'Tag' table and add a new 'tags' field to the 'Article' one.
 
 Let's now apply the migration by running ```python manage.py migrate```.
-Our database is now ready to host the new 'Tag' entities.
+Our database is ready to host the new 'Tag' entities.
 
 You can now go to the __admin__ interface (http://127.0.0.1:8000/admin), create a few Tags and link them to Articles via the Article edition form.
 
 ## Interface Update
 
-We now have a brand new entity, linked to the __admin__ back-end, but it is not yet showed to the user in any of our article views.
-To take care of this, we will first need to edit our _blog/views.py_ to grab the tags associated with each article at the moment we query the database:
+At this point we have a brand new entity, linked to the __admin__ back-end, but it is not yet displayed to the user in any of our article views.
+To handle this, we will first need to edit our _blog/views.py_ to grab the tags associated with each article:
 
 ```python
 # blog/views.py
@@ -84,7 +84,7 @@ def article(request, slug):
 *TIP: The call to 'prefetch_related' asks Django to query the database for the associated Tags at the same time as it queries the Articles, in a single batch. 'prefetch_related' makes the overall query sligthly slower, but allows for a single database connection, which is crucial when your application scales up. If not for its use, each call to 'article.tags' in views and templates would generate an individual query for the related Tag objects.*
 
 We also need to update our templates, to display the tags under the article body.
-We will make the following update to both _blog/templates/index.html_ and _blog/templates/article.html_:
+We will make the following addition to both _blog/templates/index.html_ and _blog/templates/article.html_:
 
 ```html
 <!-- blog/templates/index.html & blog/templates/article.html -->
@@ -210,7 +210,7 @@ Having our Tags show up on the Article views is nice, but how about making taggi
 For example, we could make the action of clicking a tag a way to access all articles associated with this tag.
 
 We will start by creating a new __QuerySet__ method for the Article model, which will return all the entities associated with a tag's _slug_.
-The method is defined as follow, in _blog/models.py_:
+The method is defined as follow in _blog/models.py_:
 
 ```python
 # blogs/models.py
@@ -246,12 +246,12 @@ def tag(request, tag_slug):
     return render(request, 'selection.html', vars)
 ```
 
-Here we are using the 'values()' call at the end of our queryset.
-The idea is to only select the fields that matter for our functionality: since we won't be displaying the entire articles in this new page, we can only select the _title_, _slug_ and _created_ fields of the Article objects, which is enough to create a list of Articles titles.
-Users will be able to click each article to access its content.
+Here we are using the ```values()``` call at the end of our queryset.
+The idea is to only select the fields that matter for our functionality: since we won't be displaying the entire articles in this new page, we can only select the _title_, _slug_ and _created_ fields of the Article objects, which is enough to create a list of articles.
+Users will be able to click each article title to access its content.
 
 By default, a QuerySet returns all the attributes of an object.
-'values()', in the manner of a SQL __'SELECT'__ command, lets us pick the fields individually.
+```values()```, in the manner of a SQL __'SELECT'__ command, lets us pick the fields individually.
 
 The next step is the creation of the template associated with this new view.
 We will create a _'selection.html'_ template, inheriting our _blog/template/base-template.html_, under the same _blog/template/_ folder:
@@ -336,8 +336,8 @@ urlpatterns = [
 ]
 ```
 
-Finally, we can update the _index.html_ and _article.html_ templates, to transform the simple tags under the articles into links to our new _selection.html_ page.
-As per the definition in _views.py_, the tag's slug is passed as an argument to the 'tag-selection' URL:
+Finally, we can update the _index.html_ and _article.html_ templates, to transform the simple tags under the articles bodies into links to our new _selection.html_ page.
+As per the definition in _views.py_, the tag's _slug_ is passed as an argument to the 'tag-selection' URL:
 
 ```html
 <!-- blog/templates/index.html & blog/templates/article.html -->
@@ -348,12 +348,11 @@ As per the definition in _views.py_, the tag's slug is passed as an argument to 
 ...
 ```
 
-Now not only our articles show up with themes labelled, but clicking those items now bring the user to a list of related articles, sharing the same Tag.
-Pretty neat, right?
+Now not only our articles show up with labelled themes, but clicking those items now bring the user to a list of related articles sharing the same Tag.
 
 ## Polishing the interface
 
-In order to make the navigation experience consistent inside our application, let's get rid of the 'back' button in the article __details__ page, and instead make our title in the navigation bar a link to the __index__ page.
+In order to make the navigation experience consistent across the application, let's get rid of the 'back' button in the article __details__ page, and instead make our site's title in the navigation bar a link to the __index__ page.
 We will need to edit the _blog/templates/article.html_ file:
 
 ```html
@@ -375,7 +374,7 @@ as well as _blog/templates/base-template.html_:
 </nav>
 ...
 ```  
-We will make sure the title's appeareance does not change when adding the link, by updating the _styles.css_ settings:
+We will make sure the title's appearance does not change when adding the link, by updating the _styles.css_ settings:
 ```css
 /* blog/static/blog/css/styles.css */
 ...
